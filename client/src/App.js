@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Login from './components/Login';
+import Register from './components/Register';
+import Events from './components/Events';
+import EventDetail from './components/EventDetail';
+import Groups from './components/Groups';
+import GroupDetail from './components/GroupDetail';
+import GroupInvite from './components/GroupInvite';
+import GroupInvitations from './components/GroupInvitations';
+import UserProfile from './components/UserProfile';
+import Home from './components/Home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/events/:id" element={<EventDetail />} />
+        <Route path="/groups" element={<Groups />} />
+        <Route path="/groups/:id" element={<GroupDetail />} />
+        <Route path="/groups/:id/invite" element={<GroupInvite />} />
+        <Route path="/invitations" element={<GroupInvitations />} />
+        <Route path="/profile/:id" element={<UserProfile />} />
+        <Route path="/profile" element={<UserProfile />} />
+      </Routes>
+    </Router>
   );
 }
 
